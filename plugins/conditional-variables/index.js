@@ -5,45 +5,23 @@ module.exports.templateTags = [
     description: 'conditional evaluation of variables',
     args: [
       {
-        displayName: 'Action',
-        type: 'enum',
-        options: [
-          { displayName: 'Encode', value: 'encode' },
-          { displayName: 'Decode', value: 'decode' },
-        ],
-      },
-      {
-        displayName: 'Kind',
-        type: 'enum',
-        options: [
-          { displayName: 'Normal', value: 'normal' },
-          { displayName: 'URL', value: 'url' },
-        ],
-      },
-      {
-        displayName: 'Value',
+        displayName: 'Expression',
         type: 'string',
-        placeholder: 'My text',
+		placeholder: 'true'
+      },
+      {
+        displayName: 'Value when True',
+        type: 'string',
+        placeholder: 'True Result',
+      },
+      {
+        displayName: 'Value when False',
+        type: 'string',
+        placeholder: 'False Result',
       },
     ],
-    run(context, action, kind, text) {
-      text = text || '';
-
-      if (action === 'encode') {
-        if (kind === 'normal') {
-          return Buffer.from(text, 'utf8').toString('base64');
-        } else if (kind === 'url') {
-          return Buffer.from(text, 'utf8')
-            .toString('base64')
-            .replace(/\+/g, '-')
-            .replace(/\//g, '_')
-            .replace(/=/g, '');
-        }
-      } else if (action === 'decode') {
-        return Buffer.from(text, 'base64').toString('utf8');
-      } else {
-        throw new Error('Unsupported operation "' + action + '". Must be encode or decode.');
-      }
+    run(context, expression, trueResult, falseResult) {
+      return eval(expression) ? trueResult : falseResult;
     },
   },
 ];

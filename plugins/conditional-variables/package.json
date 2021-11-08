@@ -1,0 +1,25 @@
+{
+  "name": "conditional-variables"
+  "version": "0.0.1",
+  "author": "Michael Cowie (mcowie@quebit.com)",
+  "description": "Insomnia conditional variables template tag",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kong/insomnia.git",
+    "directory": "plugins/conditional-variables"
+  },
+  "bugs": {
+    "url": "https://github.com/michaelcowie/insomnia/issues"
+  },
+  "main": "index.js",
+  "insomnia": {
+    "unlisted": true,
+    "name": "conditionalVariable",
+    "description": "Conditional evaluation of variables"
+  },
+  "scripts": {
+    "test": "jest --silent"
+  },
+  "gitHead": "e46bf021cf4b4379e31d2b2d9025d476d6839fa1"
+}
